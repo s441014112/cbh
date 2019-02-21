@@ -1,0 +1,151 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>下拉菜单响应式</title>
+    <style>
+        .sideBar-wrap{
+            position:fixed;
+            height:100%;
+            display:flex;
+            flex:1;
+            flex-direction: column;
+            padding-top:60px;
+            overflow-x: hidden;
+
+        }
+        .sideBar-menu{
+            height:100%;
+            flex:1;
+        }
+        .el-menu{
+            border-right:solid 1px #e6e6e6;
+            list-style:none;
+            position: relative;
+            margin:0;
+            padding-left:0;
+        }
+        el-menu::after,el-menu:before{
+            content:"";
+            display:table;
+        }
+        .el-menu-item{
+            font-size:14px;
+            color:#303133;
+            padding:0 20px;
+            cursor:pointer;
+        }
+        .el-menu-item .is-disabled{
+            opacity: 0.25;
+            cursor:not-allowed;
+            background:0 0 !important;
+        }
+        .el-menu-item, .el-submenu__title {
+            height: 56px;
+            line-height: 56px;
+            position: relative;
+            white-space: nowrap;
+            list-style: none;
+        }
+        .el-menu-item i{
+            color:#909399;
+        }
+        .ob-icon.icon-clock:before {
+            content: '\E021';
+        }
+        .el-menu-item * {
+            vertical-align: middle;
+        }
+        .el-submenu{
+            list-style:none;
+            margin:0;
+            padding-left:0;
+        }
+        div{
+            display:block;
+        }
+        .el-submenu__title * {
+            vertical-align: middle;
+        }
+        [class*=" el-icon-"], [class^=el-icon-] {
+            font-family: element-icons!important;
+            speak: none;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            vertical-align: baseline;
+            display: inline-block;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .el-submenu .el-menu{
+            border:none;
+        }
+        .el-menu--inline{
+            background:#f9f9f9;
+            display:none;
+        }
+        .el-submenu__title:hover + .el-menu--inline{
+            display:block;
+        }
+        .el-submenu .el-menu-item{
+            height:50px;
+            line-height:50px;
+            padding:0 45px;
+            min-width:200px;
+        }
+        .el-menu-item,.el-submenu__title{
+            white-space: nowrap;
+            list-style:none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <aside class="el-aside sideBar-wrap" style="width: 200px;">
+        <ul role="menubar" class="sideBar-menu el-menu">
+            <li role="menuitem" tabindex="-1" class="el-menu-item is-disabled" title="此功能尚未上线" style="padding-left: 20px;">
+                <span>实时状态</span></li>
+            <li role="menuitem" aria-haspopup="true" class="el-submenu">
+                <div class="el-submenu__title" style="padding-left: 20px;"> <span
+                        slot="title">用户画像</span></div>
+                <ul role="menu" class="el-menu el-menu--inline">
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">用户分类</li>
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">访问设备</li>
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">访问习惯</li>
+                </ul>
+            </li>
+            <li role="menuitem" aria-haspopup="true" class="el-submenu is-active is-opened" aria-expanded="true">
+                <div class="el-submenu__title" style="padding-left: 20px;"> <span
+                        slot="title">性能监控</span></div>
+                <ul role="menu" class="el-menu el-menu--inline" data-old-padding-top="" data-old-padding-bottom=""
+                    data-old-overflow="" style="">
+                    <li role="menuitem" tabindex="-1" class="el-menu-item is-active" style="padding-left: 40px;">Probe性能统计
+                    </li>
+                </ul>
+            </li>
+            <li role="menuitem" aria-haspopup="true" class="el-submenu is-opened" aria-expanded="true">
+                <div class="el-submenu__title" style="padding-left: 20px;"> <span
+                        slot="title">行为分析</span><i class="el-submenu__icon-arrow el-icon-arrow-down"></i></div>
+                <ul role="menu" class="el-menu el-menu--inline" data-old-padding-top="" data-old-padding-bottom=""
+                    data-old-overflow="" style="">
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">Banner效果</li>
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">页面转化分析</li>
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;">页面基础指标统计</li>
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;"><span>页面控件指标</span>
+                    </li>
+                    <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 40px;"><span>热区图</span></li>
+                </ul>
+            </li>
+            <li role="menuitem" tabindex="-1" class="el-menu-item is-disabled" title="此功能尚未上线" style="padding-left: 20px;">
+                 <span>体验分析</span></li>
+            <li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left: 20px;"> <span>用研报告</span></li>
+            <!---->
+        </ul>
+    </aside>
+</body>
+</html>
